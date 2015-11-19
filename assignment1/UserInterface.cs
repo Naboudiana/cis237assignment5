@@ -11,7 +11,7 @@ namespace assignment1
 {
     class UserInterface
     {
-        const int maxMenuChoice = 5;
+        const int maxMenuChoice = 7;
         //---------------------------------------------------
         //Public Methods
         //---------------------------------------------------
@@ -19,7 +19,7 @@ namespace assignment1
         //Display Welcome Greeting
         public void DisplayWelcomeGreeting()
         {
-            Console.WriteLine("Welcome to the wine program");
+            Console.WriteLine("Welcome to the beverage program");
         }
 
         //Display Menu And Get Response
@@ -55,88 +55,182 @@ namespace assignment1
         public string GetSearchQuery()
         {
             Console.WriteLine();
-            Console.WriteLine("What would you like to search for?");
+            Console.WriteLine("What beverage would you like to search for? (SEARCH BY ID)");
             Console.Write("> ");
             return Console.ReadLine();
         }
 
         //Get New Item Information From The User.
-        public string[] GetNewItemInformation()
+        public Beverage GetNewItemInformation()
         {
+            Beverage beverage = new Beverage();
             Console.WriteLine();
-            Console.WriteLine("What is the new items Id?");
+            Console.WriteLine("What is the new beverage's Id?");
             Console.Write("> ");
-            string id = Console.ReadLine();
-            Console.WriteLine("What is the new items Description?");
+            beverage.id = Console.ReadLine();
+            Console.WriteLine("What is the new beverage's Name?");
             Console.Write("> ");
-            string description = Console.ReadLine();
-            Console.WriteLine("What is the new items Pack?");
+            beverage.name = Console.ReadLine();
+            Console.WriteLine("What is the new beverage's Pack?");
             Console.Write("> ");
-            string pack = Console.ReadLine();
+            beverage.pack = Console.ReadLine();
+            Console.WriteLine("What is the new beverage's Price?");
+            Console.Write("> ");
+            beverage.price = decimal.Parse(Console.ReadLine());
 
-            return new string[] { id, description, pack };
+            return beverage;
         }
 
-        //Display Import Success
+        public Beverage GetUpdates(Beverage beverageToUpdate)
+        {            
+            Beverage beverage = new Beverage();
+            Console.WriteLine(" IDs cannot be updated, however you can choose to update name, pack, and/or size");
+            Console.WriteLine("Would You Like To Update The Name? (yes = 1/no = 2)");
+            int answer1 = Int32.Parse(Console.ReadLine());
+            switch (answer1)
+            {
+                case 1:
+                    Console.WriteLine("What is the new beverage's Name?");
+                    Console.Write("> ");
+                    beverageToUpdate.name = Console.ReadLine();
+                    break;
+
+                case 2:
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    break;
+            }
+
+            Console.WriteLine("Would You Like To Update The Pack? (yes = 1/no = 2)");
+            int answer2 = Int32.Parse(Console.ReadLine());
+            switch (answer2)
+            {
+                case 1:
+                    Console.WriteLine("What is the new beverage's Pack?");
+                    Console.Write("> ");
+                    beverageToUpdate.pack = Console.ReadLine();
+                    break;
+
+                case 2:
+                    
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    break;
+            }
+
+            Console.WriteLine("Would You Like To Update The Price? (yes = 1/no = 2)");
+            int answer3 = Int32.Parse(Console.ReadLine());
+            switch (answer3)
+            {
+                case 1:
+                    Console.WriteLine("What is the new beverage's Price?");
+                    Console.Write("> ");
+                    beverageToUpdate.price = decimal.Parse(Console.ReadLine());
+                    break;
+
+                case 2:
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    break;
+            }
+
+            return beverageToUpdate;
+        }
+
         public void DisplayImportSuccess()
         {
             Console.WriteLine();
-            Console.WriteLine("Wine List Has Been Imported Successfully");
-        }
-
-        //Display Import Error
-        public void DisplayImportError()
-        {
-            Console.WriteLine();
-            Console.WriteLine("There was an error importing the CSV");
+            Console.WriteLine("Beverage List Has Been Imported Successfully");
         }
 
         //Display All Items
-        public void DisplayAllItems(string[] allItemsOutput)
+        public void DisplayAllBeverages(Beverage[] allItemsOutput)
         {
             Console.WriteLine();
-            foreach (string itemOutput in allItemsOutput)
+            foreach (Beverage beverage in allItemsOutput)
             {
-                Console.WriteLine(itemOutput);
+                if (beverage != null)
+                    Console.WriteLine(beverage.id + " " + beverage.name + " " + beverage.pack + " " + beverage.price);
             }
         }
 
         //Display All Items Error
-        public void DisplayAllItemsError()
+        public void DisplayAllBeveragesError()
         {
             Console.WriteLine();
-            Console.WriteLine("There are no items in the list to print");
+            Console.WriteLine("There are no beverages in the list to print");
         }
 
         //Display Item Found Success
-        public void DisplayItemFound(string itemInformation)
+        public void DisplayBeverageFound(Beverage FoundInformation)
         {
             Console.WriteLine();
-            Console.WriteLine("Item Found!");
-            Console.WriteLine(itemInformation);
+            Console.WriteLine("Beverage Found!");
+           
         }
 
         //Display Item Found Error
-        public void DisplayItemFoundError()
+        public void DisplayBeverageFoundError()
         {
             Console.WriteLine();
             Console.WriteLine("A Match was not found");
         }
 
         //Display Add Wine Item Success
-        public void DisplayAddWineItemSuccess()
+        public void DisplayAddBeverageSuccess()
         {
             Console.WriteLine();
-            Console.WriteLine("The Item was successfully added");
+            Console.WriteLine("The Beverage was successfully added");
         }
 
         //Display Item Already Exists Error
-        public void DisplayItemAlreadyExistsError()
+        public void DisplayBeverageAlreadyExistsError()
         {
             Console.WriteLine();
-            Console.WriteLine("An Item With That Id Already Exists");
+            Console.WriteLine("A Beverage With That Id Already Exists");
         }
 
+        public void DisplayBeverageUpdateChoice()
+        {
+            Console.WriteLine();
+            Console.WriteLine("You chose to update a beverage which you will need to, first, search for");
+        }
+
+        public void DisplayBeverageUpdateSucces()
+        {
+            Console.WriteLine();
+            Console.WriteLine("The beverage was successfully updated");
+        }
+
+        public void DisplayBeverageUpdateError()
+        {
+            Console.WriteLine();
+            Console.WriteLine("The beverage was not found, thus it cannot be updated");
+        }
+
+        public void DisplayBeverageDeleteChoice()
+        {
+            Console.WriteLine();
+            Console.WriteLine("You chose to delete a beverage which you will need to, first, search for");
+        }
+
+        public void DisplayBeverageDeleteSuccess()
+        {
+            Console.WriteLine();
+            Console.WriteLine("The beverage was successfully deleted");
+        }
+
+        public void DisplayBeverageDeleteError()
+        {
+            Console.WriteLine();
+            Console.WriteLine("The beverage was not found, thus it cannot be deleted");
+        }
 
         //---------------------------------------------------
         //Private Methods
@@ -149,10 +243,12 @@ namespace assignment1
             Console.WriteLine("What would you like to do?");
             Console.WriteLine();
             Console.WriteLine("1. Load Wine List From CSV");
-            Console.WriteLine("2. Print The Entire List Of Items");
-            Console.WriteLine("3. Search For An Item");
-            Console.WriteLine("4. Add New Item To The List");
-            Console.WriteLine("5. Exit Program");
+            Console.WriteLine("2. Print The Entire List Of Beverages");
+            Console.WriteLine("3. Search For An Beverage");
+            Console.WriteLine("4. Add New Beverage To The List");
+            Console.WriteLine("5. Update An Existing Beverage");
+            Console.WriteLine("6. Delete An Beverage From The List");
+            Console.WriteLine("7. Exit Program");
         }
 
         //Display the Prompt
