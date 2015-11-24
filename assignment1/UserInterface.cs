@@ -11,7 +11,7 @@ namespace assignment1
 {
     class UserInterface
     {
-        const int maxMenuChoice = 7;
+        const int maxMenuChoice = 6;
         //---------------------------------------------------
         //Public Methods
         //---------------------------------------------------
@@ -86,7 +86,7 @@ namespace assignment1
             Beverage beverage = new Beverage();
             Console.WriteLine(" IDs cannot be updated, however you can choose to update name, pack, and/or size");
             Console.WriteLine("Would You Like To Update The Name? (yes = 1/no = 2)");
-            int answer1 = Int32.Parse(Console.ReadLine());
+            int answer1 = Int32.Parse(Console.ReadLine());            
             switch (answer1)
             {
                 case 1:
@@ -100,7 +100,8 @@ namespace assignment1
 
                 default:
                     Console.WriteLine("Invalid selection.");
-                    break;
+                    break;                                            
+                    
             }
 
             Console.WriteLine("Would You Like To Update The Pack? (yes = 1/no = 2)");
@@ -141,12 +142,6 @@ namespace assignment1
             }
 
             return beverageToUpdate;
-        }
-
-        public void DisplayImportSuccess()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Beverage List Has Been Imported Successfully");
         }
 
         //Display All Items
@@ -242,13 +237,12 @@ namespace assignment1
             Console.WriteLine();
             Console.WriteLine("What would you like to do?");
             Console.WriteLine();
-            Console.WriteLine("1. Load Wine List From CSV");
-            Console.WriteLine("2. Print The Entire List Of Beverages");
-            Console.WriteLine("3. Search For An Beverage");
-            Console.WriteLine("4. Add New Beverage To The List");
-            Console.WriteLine("5. Update An Existing Beverage");
-            Console.WriteLine("6. Delete An Beverage From The List");
-            Console.WriteLine("7. Exit Program");
+            Console.WriteLine("1. Print The Entire List Of Beverages");
+            Console.WriteLine("2. Search For A Beverage");
+            Console.WriteLine("3. Add New Beverage To The List");
+            Console.WriteLine("4. Update An Existing Beverage");
+            Console.WriteLine("5. Delete A Beverage From The List");
+            Console.WriteLine("6. Exit Program");
         }
 
         //Display the Prompt

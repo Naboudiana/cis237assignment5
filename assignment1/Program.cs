@@ -40,17 +40,11 @@ namespace assignment1
 
             BeverageSDiagneEntities beverageEntities = new BeverageSDiagneEntities();
             
-            while (choice != 7)
+            while (choice != 6)
             {
                 switch (choice)
                 {
                     case 1:
-                                                
-                        //Display Success Message
-                        userInterface.DisplayImportSuccess();
-                        break;
-
-                    case 2:
                         //Print Entire List Of Items
                         int i = 0;
                         Beverage[] allItems = new Beverage[4000];
@@ -75,7 +69,7 @@ namespace assignment1
                         }
                         break;
 
-                    case 3:
+                    case 2:
                         //Search For An Item
                        
                         string searchQuery = userInterface.GetSearchQuery();
@@ -92,7 +86,7 @@ namespace assignment1
                        
                         break;
 
-                    case 4:
+                    case 3:
                         //Add A New Item To The List
                       
                         Beverage newBeverageToAdd = userInterface.GetNewItemInformation();
@@ -109,7 +103,7 @@ namespace assignment1
                         beverageEntities.SaveChanges();
                         break;
 
-                    case 5:
+                    case 4:
 
                         //Update an Item   
                         userInterface.DisplayBeverageUpdateChoice();
@@ -132,7 +126,7 @@ namespace assignment1
 
                         break;
 
-                    case 6:
+                    case 5:
 
                         //Delete an Item from the list
                         userInterface.DisplayBeverageDeleteChoice();

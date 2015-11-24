@@ -19,11 +19,6 @@ namespace assignment1
         public string pack { get; set; }
         public decimal price { get; set; }
         public bool active { get; set; }
-
-       /* public override string ToString()
-        {
-            
-            return 
-        }*/
+               
     }
 }
